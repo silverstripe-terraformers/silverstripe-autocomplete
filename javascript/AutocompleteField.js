@@ -110,6 +110,13 @@
                         $input.autocomplete('search');
                     }
                 });
+
+                // Allow enter to search as some legacy gridfield code prevents jquery's auto complete event
+                $input.on('keydown', function(evt) {
+                    if (evt.which === $.ui.keyCode.ENTER) {
+                        setFieldValue($input.val());
+                    }
+                })
     		}
 
 		});
